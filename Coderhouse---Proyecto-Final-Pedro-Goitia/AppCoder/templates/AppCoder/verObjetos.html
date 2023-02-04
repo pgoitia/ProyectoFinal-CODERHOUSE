@@ -1,0 +1,48 @@
+{% extends "AppCoder/padre.html" %}
+
+
+{% load static %}
+
+
+
+{% block principal %}
+
+<h1>Objetos publicados disponibles:</h1>
+
+{% endblock %}
+
+
+{% block titulo %}
+
+
+
+{% endblock %}
+
+
+{% block body %}
+
+{% for obj in objects %}
+<img src="{{obj.imagen.url}}" alt="No hay imágen">
+<p>Publicación hecha por: {{obj.nombre}} {{obj.apellido}}</p>
+<p>Contacto: {{obj.contacto}}</p>
+<p>{{obj.objeto}}</p>
+<p>Descripción: {{obj.descripcion}}</p>
+<p>Fecha de publicación: {{obj.fecha}}</p>
+<p>Precio: {{obj.precio}}</p>
+
+<br>
+
+
+
+
+<button>
+    <a href="{% url 'Eliminarobjeto' obj.objeto %}">Eliminar publicación</a>
+</button>
+<button>
+    <a href="{% url 'Editarobjeto' obj.objeto %}">Editar publicación</a>
+</button>
+
+
+{% endfor %}
+
+{% endblock %}
